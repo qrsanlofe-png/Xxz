@@ -253,21 +253,165 @@
 .submit-btn:hover {
     background-color: #27ae60;
 }
+/* تنسيق قسم المتجر */
+.store-section {
+    padding: 60px 20px;
+    background-color: #f8fafc;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* كرت المنتج */
+.product-card {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    flex: 1 1 300px;
+    max-width: 340px;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+/* تمييز كرت "الأكثر طلباً" */
+.product-card.featured {
+    border: 2px solid #3498db;
+    transform: scale(1.03);
+}
+.product-card.featured:hover {
+    transform: scale(1.03) translateY(-10px);
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3498db;
+    color: white;
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* تفاصيل المنتج */
+.product-image {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.product-title {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+.old-price {
+    font-size: 16px;
+    color: #94a3b8;
+    text-decoration: line-through; /* خط شطب فوق السعر القديم */
+    margin-right: 8px;
+}
+
+.product-features {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 45px;
+}
+
+/* زر الشراء */
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #3498db;
+}
+/* تنسيق أيقونة السلة والعداد */
+.cart-icon {
+    position: relative;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #34495e;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.05);
+}
+
+/* الدائرة الحمراء الصغيرة للعداد */
+#cart-count {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: #e74c3c; /* لون أحمر للتنبيه */
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* جعلها دائرة مثالية */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
 
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل -->
-    <nav class="navbar">
-        <div class="logo">موقعي الذكي</div>
-        <ul class="nav-links">
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">خدماتنا</a></li>
-            <li><a href="#">من نحن</a></li>
-            <li><a href="#">اتصل بنا</a></li>
-        </ul>
-    </nav>
+<!-- شريط التنقل المحدث مع السلة -->
+<nav class="navbar">
+    <div class="logo">موقعي الذكي</div>
+    <ul class="nav-links">
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">خدماتنا</a></li>
+        <li><a href="#">متجرنا</a></li>
+    </ul>
+    
+    <!-- أيقونة السلة والعداد -->
+    <div class="cart-icon">
+        🛒 <span id="cart-count">0</span>
+    </div>
+</nav>
+
 
     <!-- محتوى الصفحة -->
     <div class="content">
@@ -290,6 +434,44 @@
                 <p>نساعدك في نشر موقعك والوصول لأكبر عدد من المستهدفين عبر خطط مدروسة.</p>
             </div>
         </div>
+        <!-- قسم متجر المنتجات -->
+<div class="store-section">
+    <h2 class="section-title">متجرنا الرقمي</h2>
+    <p style="text-align: center; color: #7f8c8d; margin-bottom: 40px;">اختر من بين باقاتنا الاحترافية وابدأ رحلة نجاحك الآن.</p>
+    
+    <div class="products-container">
+        
+        <!-- المنتج الأول -->
+        <div class="product-card">
+            <div class="product-image">💻</div> <!-- يمكنك استبدال الإيموجي برابط صورة لاحقاً -->
+            <h3 class="product-title">باقة الموقع التعريفي</h3>
+            <p class="product-price">150$ <span class="old-price">250$</span></p>
+            <p class="product-features">صفحة واحدة متجاوبة + لوحة تحكم + ربط الدومين</p>
+            <button class="buy-btn" onclick="buyProduct('الموقع التعريفي')">شراء الآن</button>
+        </div>
+
+        <!-- المنتج الثاني -->
+        <div class="product-card featured">
+            <div class="badge">الأكثر طلباً ⭐</div>
+            <div class="product-image">🛒</div>
+            <h3 class="product-title">باقة المتجر الإلكتروني</h3>
+            <p class="product-price">299$ <span class="old-price">450$</span></p>
+            <p class="product-features">منتجات غير محدودة + سلة مشتريات + طرق دفع متعددة</p>
+            <button class="buy-btn" onclick="buyProduct('المتجر الإلكتروني')">شراء الآن</button>
+        </div>
+
+        <!-- المنتج الثالث -->
+        <div class="product-card">
+            <div class="product-image">📱</div>
+            <h3 class="product-title">باقة تطبيق الهاتف</h3>
+            <p class="product-price">499$ <span class="old-price">700$</span></p>
+            <p class="product-features">تطبيق أندرويد وآيفون + رفع على المتاجر + دعم فني مجاني</p>
+            <button class="buy-btn" onclick="buyProduct('تطبيق الهاتف')">شراء الآن</button>
+        </div>
+
+    </div>
+</div>
+
         <!-- قسم آراء العملاء -->
 <div class="testimonials-section">
     <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
@@ -359,3 +541,22 @@
 
 </body>
 </html>
+<script type="text/javascript" charset="utf-8">
+    function buyProduct(productName) {
+    alert("شكراً لاختيارك باقة [" + productName + "]! تم نقل طلبك بنجاح وجاري تجهيز فاتورتك 🛒✨");
+}
+// تعريف متغير لتخزين عدد المنتجات في السلة يبدأ من الصفر
+let totalItemsInCart = 0;
+
+function buyProduct(productName) {
+    // 1. زيادة العداد بمقدار 1
+    totalItemsInCart = totalItemsInCart + 1;
+    
+    // 2. تحديث الرقم الظاهر في الصفحة مباشرة
+    document.getElementById("cart-count").innerText = totalItemsInCart;
+    
+    // 3. إظهار رسالة ترحيبية وتأكيدية للمستخدم
+    alert("تم إضافة باقة [" + productName + "] إلى سلة المشتريات بنجاح! 🛒✨");
+}
+
+</script>
